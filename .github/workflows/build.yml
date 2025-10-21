@@ -31,14 +31,15 @@ jobs:
         run: |
           python main.py --url "https://www.njit.edu"
 
-      - name: 🔎 Verify QR code file created
+            - name: 🔎 Verify QR code file created
         run: |
-          if [ -f "qr_codes/"*".png" ]; then
+          if compgen -G "qr_codes/*.png" > /dev/null; then
             echo "✅ QR code generated successfully!"
           else
             echo "❌ QR code not found!"
             exit 1
           fi
+
 
       - name: 🧪 Run basic pytest check
         run: |
